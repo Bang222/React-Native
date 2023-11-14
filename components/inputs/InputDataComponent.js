@@ -58,7 +58,7 @@ const inputDataComponent = ({open ,name,SetName,location,setLocation,date,onChan
                 <Label label={"Difficulty Level"}/>
                 <View style={[{borderWidth: 1, borderColor: 'gray', borderRadius: 20}, styles.picker]}>
                     <Picker
-                        selectedValue={difficultLevel} // Set the default value here
+                        selectedValue={difficultLevel}
                         style={{height: 40}}
                         onValueChange={(itemValue) => setDifficultLevel(itemValue)}
                     >

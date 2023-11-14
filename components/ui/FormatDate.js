@@ -1,6 +1,6 @@
 import {View} from "react-native";
 
-const FormDate = (date) => {
+const FormatDate = (date) => {
     const formatDate = new Date(date)
     const option = {
         year: 'numeric',
@@ -9,4 +9,4 @@ const FormDate = (date) => {
     };
     return(<View>{formatDate?.toLocaleString("es-uk",option) ?? ""}</View>)
 }
-export default FormDate
+export default FormatDate

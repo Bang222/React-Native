@@ -45,7 +45,7 @@ const ObservationScreen = ({route}) => {
             <View>
                 {dataObservationOfHikes.map((item) => {return(
                     <View key = {item.id}>
-                        <DetailsObservation observationData={item}/>
+                        <DetailsObservation observationData={item} getAllObservation={getAllDataObservationsOfHike}/>
                     </View>
                 )})}
             </View>

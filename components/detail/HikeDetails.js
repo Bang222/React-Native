@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         borderBox: true,
         height: 40,
         color: 'white',
-        borderRadius: 20,
+        borderRadius: 10,
         padding: 5,
         paddingHorizontal: 15,
         fontWeight: 'bold',

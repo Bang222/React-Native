@@ -1,19 +1,24 @@
 import {Pressable, StyleSheet, View} from "react-native";
 import TextCenterCustom from "../ui/textCenterCustom";
 import ModalShowDataHike from "../modal/ModalShowDataHike";
+import {useState} from "react";
 
-const SearchDetail = ({openedDetail,dataHike,handleDetail,setOpenedDetail}) => {
+const SearchDetail = ({dataHike}) => {
+    const [open, setOpen] = useState(false)
+    const handleDetail = () => {
+        setOpen(!open)
+    }
     return(
         <View style={styles.container}>
             <View style={[styles.button, {backgroundColor: 'grey', paddingTop: 5, marginRight: 30, width: "100%"}]}>
                 <Pressable onPress={handleDetail}>
                     <TextCenterCustom message={dataHike.Name}/>
                 </Pressable>
-                {openedDetail ?
+                {open ?
                     <ModalShowDataHike radioValue={dataHike.ParkingAvailable} description={dataHike.description} isSubmit={false} message={"Detail"}
                                        highOfTheLength={dataHike.HighOfTheLength} difficultyLevel={dataHike.DifficultyLevel} nameHike={dataHike.Name}
                                        location={dataHike.Location} dateOfTheHike={dataHike.DateOfTheHike}
-                                       modalVisible={openedDetail} setModalVisible={setOpenedDetail}/> : ""}
+                                       modalVisible={open} setModalVisible={setOpen}/> : ""}
             </View>
         </View>
     )

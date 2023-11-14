@@ -12,7 +12,6 @@ const SearchScreen = () => {
     const [search, setSearch] = useState("")
     const [loading, setLoading] = useState(false)
     const [dataHikes, setDataHikes] = useState([])
-    const [open, setOpen] = useState(false)
     const isFocused = useIsFocused()
 
     const getAllDataHike = async () => {
@@ -25,17 +24,12 @@ const SearchScreen = () => {
             console.error(err)
         }
     }
+
     const handleSearch = (dataSearch) => {
         database.searchHike(dataSearch).then((data) => {
             setDataHikes(data)
         })
     }
-    const handleDetail = () => {
-        setOpen(!open)
-    }
-    useEffect(()=>{
-
-    },[search])
     useEffect(()=>{
         getAllDataHike().then(()=>{"oke"})
     },[isFocused])
@@ -55,7 +49,7 @@ const SearchScreen = () => {
             <View>
                 {dataHikes.map((item) => {return(
                     <View key={item.id}>
-                    <SearchDetail handleDetail={handleDetail} openedDetail={open} dataHike={item} setOpenedDetail={setOpen}/>
+                    <SearchDetail dataHike={item}/>
                     </View>
                     )}) }
             </View>

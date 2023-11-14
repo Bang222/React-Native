@@ -3,6 +3,7 @@ import EditHike from "../screens/EditHike";
 import {createStackNavigator} from "@react-navigation/stack";
 import ObservationScreen from "../screens/ObservationScreen";
 import AddObservationScreen from "../screens/AddObservationScreen";
+import EditObservationScreen from "../screens/EditObservationScreen";
 
 const RouteStack = createStackNavigator();
 export default function RouteHome() {
@@ -22,14 +23,14 @@ export default function RouteHome() {
                 headerTitle: "",
             }}
         />
-        {/*<RouteStack.Screen*/}
-        {/*    name="RouteObservation"*/}
-        {/*    component={RouteObservation}*/}
-        {/*    options={{*/}
-        {/*        headerShown: false,*/}
-        {/*        headerTitle: "",*/}
-        {/*    }}*/}
-        {/*/>*/}
+        <RouteStack.Screen
+            name="EditObservationScreen"
+            component={EditObservationScreen}
+            options={{
+                headerShown: false,
+                headerTitle: "",
+            }}
+        />
         <RouteStack.Screen
             name="ObservationScreen"
             component={ObservationScreen}
