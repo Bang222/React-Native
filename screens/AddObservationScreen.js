@@ -37,7 +37,7 @@ const AddObservationScreen = ({route}) => {
     };
     const handleAddObservation = () => {
         if(!title || !dateObservation) {
-            Alert.alert("Notifications","Invalid Data")
+           return Alert.alert("Notifications","Invalid Data")
         }
      database.addObservationsByHikeId(dataHike.id,title,dateObservation,comment).then(()=> {
          ToastAndroid.showWithGravity(

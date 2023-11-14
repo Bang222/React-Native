@@ -65,8 +65,8 @@ const searchHike = (nameHike) => {
     return new Promise((resolve, reject) => {
         db.transaction((tx) => {
             tx.executeSql(
-                "SELECT * FROM HikeEntity WHERE Name LIKE ?",
-                [`%${nameHike}%`],
+                "SELECT * FROM HikeEntity WHERE Name LIKE ? OR Location LIKE ? OR DateOfTheHike LIKE ? OR HighOfTheLength LIKE ?",
+                [`%${nameHike}%`, `%${nameHike}%`, `%${nameHike}%`, `%${nameHike}%`],
                 (_, { rows }) => {
                     resolve(rows._array);
                 },
@@ -245,6 +245,24 @@ const deleteObservationByHikeId= (hikeId) => {
             });
         });
     };
+const updateObservationsById = (observationId,title, timeObservation, comments) => {
+    return new Promise((resolve, reject) => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                "UPDATE ObservationEntity SET Title = ?,TimeObservation= ?, Comments = ? WHERE id= ?",
+                [title, timeObservation, comments, observationId],
+                (_, {insertId}) => {
+                    resolve(insertId);
+                },
+                (_, error) => {
+                    console.error("Error adding Observation:", error); // Log the error
+                    reject(error); // Reject the promise with the error
+                }
+            )
+        })
+    })
+}
+
 
     const Database = {
         initDatabase,
@@ -258,6 +276,8 @@ const deleteObservationByHikeId= (hikeId) => {
         getObservationByHikeId,
         deleteObservationByHikeId,
         searchHike,
+        deleteObservationById,
+        updateObservationsById,
     };
 
     export default Database;

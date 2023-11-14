@@ -12,7 +12,6 @@ import {createStackNavigator} from "@react-navigation/stack";
 import RouteHome from "./routes/RouteHome";
 
 const RouteTab = createBottomTabNavigator();
-const RouteStack = createStackNavigator();
 
 const Add = "Add";
 const Home = "Home";

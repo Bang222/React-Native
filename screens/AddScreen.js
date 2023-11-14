@@ -17,8 +17,8 @@ const AddScreen = () => {
     const [dateHike, setDateHike] = useState("")
     const [highOfTheLength, setHighOfLengthTheHike] = useState()
     const [radioValue, setRadioValue] = useState("")
-    const [difficultLevel, setDifficultLevel] = useState()
-    const [description, setDescription] = useState()
+    const [difficultLevel, setDifficultLevel] = useState("")
+    const [description, setDescription] = useState("")
     const [modalVisible, setModalVisible] = useState(false);
     const [reset, setReset] = useState(0)
     const itemsRadioButton = [
@@ -54,8 +54,8 @@ const AddScreen = () => {
         setDateHike("")
         setHighOfLengthTheHike("")
         setRadioValue("")
-        setReset(Math.random)
         setDifficultLevel("")
+        setReset(Math.random)
         setDescription("");
     }
     const handleSubmit = () => {
@@ -65,14 +65,13 @@ const AddScreen = () => {
         }
         Database.addHike(name, location, dateHike, radioValue, highOfTheLength, difficultLevel, description)
             .then((insertedId) => {
-                resetForm();
                 handleAddHike()
                 ToastAndroid.showWithGravity(
                     "Create Success",
                     ToastAndroid.SHORT,
                     ToastAndroid.BOTTOM
                 );
-
+                resetForm();
             })
             .catch((error) => {
                 console.error("Failed to add hike:", error);
